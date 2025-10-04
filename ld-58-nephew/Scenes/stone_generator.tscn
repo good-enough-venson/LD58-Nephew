@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd58ndvk2ouq2"]
+
+[ext_resource type="Script" uid="uid://b4p1lo5ntmqln" path="res://Scripts/stone_generator.gd" id="1_uif86"]
+
+[node name="StoneGenerator" type="Node2D"]
+script = ExtResource("1_uif86")
