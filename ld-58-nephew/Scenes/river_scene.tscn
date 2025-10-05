@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp7uqvden0ja6"]
+
+[ext_resource type="PackedScene" uid="uid://dbefdrmk7jxqo" path="res://Scenes/stones_in_hand.tscn" id="1_tsy4k"]
+[ext_resource type="Script" uid="uid://bb03ygntqgx3j" path="res://Scripts/nav_script_change_scene.gd" id="2_0xwrq"]
+[ext_resource type="Texture2D" uid="uid://c4xkk45cqjxg" path="res://Art/Sign_0.png" id="2_f8ifg"]
+[ext_resource type="FontFile" uid="uid://c4l0h60osbltd" path="res://Fonts/de re publica.ttf" id="3_0xwrq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xwrq"]
+size = Vector2(161, 51)
+
+[node name="river_scene" type="Node2D"]
+
+[node name="StonesInHand" parent="." instance=ExtResource("1_tsy4k")]
+
+[node name="ToLabButton" type="Area2D" parent="."]
+position = Vector2(995, 80)
+script = ExtResource("2_0xwrq")
+goto_scene = "Laboratory"
+
+[node name="Sprite2D" type="Sprite2D" parent="ToLabButton"]
+position = Vector2(-3, 5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_f8ifg")
+
+[node name="Label" type="Label" parent="ToLabButton/Sprite2D"]
+offset_left = -237.49998
+offset_top = -47.500015
+offset_right = 182.50002
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.36180407, 0.32305932, 0.27133033, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_0xwrq")
+theme_override_font_sizes/font_size = 64
+text = "To  Lab"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToLabButton"]
+position = Vector2(-12.5, 6.5)
+shape = SubResource("RectangleShape2D_0xwrq")
+
+[connection signal="input_event" from="ToLabButton" to="ToLabButton" method="_on_input_event"]

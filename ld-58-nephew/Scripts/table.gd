@@ -10,6 +10,14 @@ func top_right() -> Vector2: return tableCorners[1].global_position
 func bottom_left() -> Vector2: return tableCorners[2].global_position
 func bottom_right() -> Vector2: return tableCorners[3].global_position
 
+# spool up the graphics for the table inventory
+func _ready() -> void:
+	stone_pool.release_all()
+	var inventory = TableInventory.table_stones.duplicate()
+	for key in inventory.keys():
+		var pos = map_from_grid(key,TableInventory.GRID_WIDTH, TableInventory.GRID_HEIGHT) 
+		stone_pool.get_stone_node(inventory[key], pos)
+
 func _process(delta: float) -> void:
 	var mousePos = get_global_mouse_position()
 	var gridPos = map_to_grid(mousePos,TableInventory.GRID_WIDTH,TableInventory.GRID_HEIGHT)

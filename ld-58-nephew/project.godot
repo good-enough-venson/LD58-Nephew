@@ -23,6 +23,10 @@ PocketInventory="*res://Scenes/pocket_inventory.tscn"
 Grimiore="*res://Scenes/grimiore.tscn"
 Running="*res://Scenes/running.tscn"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 pointer_select={

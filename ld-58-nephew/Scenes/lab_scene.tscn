@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ep42i3b81pge"]
+[gd_scene load_steps=17 format=3 uid="uid://ep42i3b81pge"]
 
 [ext_resource type="Texture2D" uid="uid://baagk8ybyap7v" path="res://Art/labBackground.png" id="1_5w8o2"]
 [ext_resource type="Script" uid="uid://vmvstmsvais1" path="res://Scripts/victory_platters.gd" id="2_hy2iw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://banjx7tsqjwsy" path="res://Art/Platter_2.png" id="7_e1qhq"]
 [ext_resource type="Texture2D" uid="uid://cn3pmr8y6broy" path="res://Art/Platter_3.png" id="8_3nxcu"]
 [ext_resource type="Texture2D" uid="uid://d0du6m6i1kna2" path="res://Art/Platter_4.png" id="9_njuav"]
+[ext_resource type="PackedScene" uid="uid://oasg2w60rc6n" path="res://Scenes/nav_button.tscn" id="15_pw14o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ec13"]
 size = Vector2(79, 46)
@@ -210,6 +211,9 @@ polygon = PackedVector2Array(112, 394, 426, 394, 473, 434, 679, 430, 741, 387, 1
 [node name="Distiller" parent="." instance=ExtResource("3_8rfpd")]
 
 [node name="StonesInHand" parent="." instance=ExtResource("4_8rfpd")]
+
+[node name="NavButton" parent="." instance=ExtResource("15_pw14o")]
+position = Vector2(201, 36)
 
 [connection signal="input_event" from="VictoryPlatters/Platter_0" to="VictoryPlatters" method="_on_platter_0_input_event"]
 [connection signal="input_event" from="VictoryPlatters/Platter_1" to="VictoryPlatters" method="_on_platter_1_input_event"]

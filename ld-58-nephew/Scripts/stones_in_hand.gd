@@ -9,28 +9,28 @@ func _ready() -> void:
 		if child is Sprite2D:
 			var grandchild = child.get_child(0)
 			if grandchild is Label:
-				initializeGraphic(child, grandchild)
+				resetGraphic(child, grandchild)
 				spriteArray.append(child)
 				labelArray.append(grandchild)
 			else: print("No Label Found")
 		else: print("No Sprite Found")
 	
-	var sampleStones = [
-		Stone.new(1),
-		Stone.new(2),
-		Stone.new(2),
-		Stone.new(2),
-		Stone.new(2),
-		Stone.new(2),
-	]
+	#var sampleStones = [
+		#Stone.new(1),
+		#Stone.new(2),
+		#Stone.new(2),
+		#Stone.new(2),
+		#Stone.new(2),
+		#Stone.new(2),
+	#]
+	#
+	#for stone in sampleStones:
+		#if PocketInventory.add_stone(stone) == false: break
 	
-	for stone in sampleStones:
-		if PocketInventory.add_stone(stone) == false: break
-	
-	updateUI()
+	#updateUI()
 	PocketInventory.onInventoryChange.connect(updateUI)
 
-func initializeGraphic(sprite: Sprite2D, label: Label) -> void:
+func resetGraphic(sprite: Sprite2D, label: Label) -> void:
 	label.text = Stone.nullGlyph
 	label.modulate = Color.WHITE
 	sprite.flip_h = true if randf() > 0.5 else false
@@ -40,12 +40,13 @@ func initializeGraphic(sprite: Sprite2D, label: Label) -> void:
 
 func updateUI() -> void:
 	var _stones = PocketInventory.stones.duplicate()
+	# Go through the sprite array.
 	for i in range(spriteArray.size()):
-		var _i = _stones.size() - 1 - i
-		if _i < 0:
-			initializeGraphic(spriteArray[i], labelArray[i])
+		# If we have run out of stones, reset this one.
+		if _stones.size() - 1 - i < 0:
+			resetGraphic(spriteArray[i], labelArray[i])
 			break
-			
+		#otherwise, update this graphic.
 		var stone = _stones[_stones.size() - 1 - i]
 		spriteArray[i].visible = true
 		spriteArray[i].modulate = stone.color

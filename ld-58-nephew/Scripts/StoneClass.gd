@@ -39,6 +39,22 @@ static var Catalyst = [
 		"family":-1, "name":"Dorm","color":Color.DARK_GRAY,
 		"function": func(o: float, _p: Array) -> float: return o
 	},
+	
+	#{
+		#"family":0, "name":"Plus","color":Color.DARK_ORANGE, 
+		#"function": func(o: float, p: Array) -> float:
+			#for _p in p: o+=_p
+			#return o
+			#,
+	#},
+	
+	#{
+		#"family":1, "name":"Plus","color":Color.DARK_ORANGE, 
+		#"function": func(o: float, p: Array) -> float:
+			#for _p in p: o+=_p
+			#return o
+			#,
+	#},
 
 	{
 		"family":0, "name":"Rand","color":Color.DARK_ORANGE, 
@@ -118,6 +134,7 @@ static var Catalyst = [
 @export var family: int
 @export var catalyst: Dictionary
 @export var sibId: int
+var sort_id_fam_sib: float
 
 func _init(p_value: int):
 	p_value = clampi(p_value, MINSTONE, MAXSTONE)
@@ -128,6 +145,10 @@ func _init(p_value: int):
 	name = str(catalyst.name)+"."+str(sibId)
 	glyph = get_stone_glyph(value)
 	color = catalyst.color.lerp(Color.WHITE_SMOKE, float(sibId-1)/50)
+	
+	# This should give a number like 2.03, which will allow for sorting
+	#  by class mainly, and then subclass.
+	sort_id_fam_sib = float(family) + (float(sibId) / 100)
 
 func get_catalyst() -> Dictionary:
 	return get_stone_catalyst(value)

@@ -27,7 +27,7 @@ func get_stone_node(stone: Stone, pos: Vector2) -> Node2D:
 			return node
 	
 	# Expand pool if needed
-	var new_node = STONE_NODE_SCENE.instance()
+	var new_node = STONE_NODE_SCENE.instantiate()
 	add_child(new_node)
 	new_node.update_graphic(stone)
 	new_node.global_position = pos
@@ -42,6 +42,7 @@ func release_stone_node(stone: Stone):
 		node.update_graphic()
 		active_stones.erase(stone)
 
-# Get all active stone nodes (for rendering/saving)
-func get_active_nodes() -> Array:
-	return active_stones.values()
+func release_all() -> void:
+	for stone in active_stones.duplicate():
+		release_stone_node(stone)
+		
