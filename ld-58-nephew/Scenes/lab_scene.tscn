@@ -188,6 +188,8 @@ position = Vector2(-0.5, 1)
 scale = Vector2(0.5390625, 0.28125)
 texture = ExtResource("6_dx4c7")
 
+[node name="Distiller" parent="Table" instance=ExtResource("3_8rfpd")]
+
 [node name="StonePool" type="Node2D" parent="Table"]
 script = ExtResource("3_3pgh2")
 
@@ -207,8 +209,6 @@ position = Vector2(1113, 622)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Table/Area2D"]
 polygon = PackedVector2Array(112, 394, 426, 394, 473, 434, 679, 430, 741, 387, 1017, 384, 1105, 620, 27, 626)
-
-[node name="Distiller" parent="." instance=ExtResource("3_8rfpd")]
 
 [node name="StonesInHand" parent="." instance=ExtResource("4_8rfpd")]
 

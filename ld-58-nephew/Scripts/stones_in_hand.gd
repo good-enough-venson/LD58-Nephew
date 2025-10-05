@@ -27,7 +27,7 @@ func _ready() -> void:
 	#for stone in sampleStones:
 		#if PocketInventory.add_stone(stone) == false: break
 	
-	#updateUI()
+	updateUI()
 	PocketInventory.onInventoryChange.connect(updateUI)
 
 func resetGraphic(sprite: Sprite2D, label: Label) -> void:

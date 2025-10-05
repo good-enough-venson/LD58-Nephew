@@ -1,19 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp7uqvden0ja6"]
+[gd_scene load_steps=8 format=3 uid="uid://dp7uqvden0ja6"]
 
+[ext_resource type="Script" uid="uid://bp773dfadoi1t" path="res://Scenes/river_scene.gd" id="1_82tw6"]
 [ext_resource type="PackedScene" uid="uid://dbefdrmk7jxqo" path="res://Scenes/stones_in_hand.tscn" id="1_tsy4k"]
 [ext_resource type="Script" uid="uid://bb03ygntqgx3j" path="res://Scripts/nav_script_change_scene.gd" id="2_0xwrq"]
 [ext_resource type="Texture2D" uid="uid://c4xkk45cqjxg" path="res://Art/Sign_0.png" id="2_f8ifg"]
+[ext_resource type="Texture2D" uid="uid://do7raw64tu7of" path="res://Art/stream_background.png" id="2_kdf02"]
 [ext_resource type="FontFile" uid="uid://c4l0h60osbltd" path="res://Fonts/de re publica.ttf" id="3_0xwrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xwrq"]
-size = Vector2(161, 51)
+size = Vector2(140, 65)
 
 [node name="river_scene" type="Node2D"]
+script = ExtResource("1_82tw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kdf02")
+centered = false
 
 [node name="StonesInHand" parent="." instance=ExtResource("1_tsy4k")]
 
 [node name="ToLabButton" type="Area2D" parent="."]
-position = Vector2(995, 80)
+position = Vector2(1019, 581)
 script = ExtResource("2_0xwrq")
 goto_scene = "Laboratory"
 
@@ -35,9 +42,51 @@ theme_override_font_sizes/font_size = 64
 text = "To  Lab"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToLabButton"]
 position = Vector2(-12.5, 6.5)
 shape = SubResource("RectangleShape2D_0xwrq")
 
+[node name="ToLabButton2" type="Area2D" parent="."]
+position = Vector2(768, 41)
+script = ExtResource("2_0xwrq")
+goto_scene = "Court"
+
+[node name="Sprite2D" type="Sprite2D" parent="ToLabButton2"]
+position = Vector2(-3, 5)
+scale = Vector2(0.4, 0.4)
+
+[node name="Label" type="Label" parent="ToLabButton2/Sprite2D"]
+offset_left = -224.99998
+offset_top = 14.999996
+offset_right = 195.00002
+offset_bottom = 137.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5882353)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_0xwrq")
+theme_override_font_sizes/font_size = 49
+text = "Court"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToLabButton2"]
+position = Vector2(-10, 3.5)
+shape = SubResource("RectangleShape2D_0xwrq")
+
+[node name="PickStonesArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PickStonesArea"]
+polygon = PackedVector2Array(190, 638, 573, 639, 799, 501, 1051, 493, 1045, 454, 839, 406, 844, 351, 815, 348, 710, 430, 549, 475, 481, 515, 238, 589)
+
+[node name="ChuckStonesArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ChuckStonesArea"]
+polygon = PackedVector2Array(1142, 192, 893, 155, 729, 176, 531, 157, 2, 250, 1, 638, 86, 607, 197, 607, 246, 570, 474, 506, 546, 463, 706, 420, 887, 283, 1049, 229, 1142, 233)
+
 [connection signal="input_event" from="ToLabButton" to="ToLabButton" method="_on_input_event"]
+[connection signal="input_event" from="ToLabButton2" to="ToLabButton2" method="_on_input_event"]
+[connection signal="input_event" from="PickStonesArea" to="." method="_on_pick_stones_area_input_event"]
+[connection signal="input_event" from="ChuckStonesArea" to="." method="_on_chuck_stones_area_input_event"]

@@ -14,14 +14,14 @@ func try_place_stone(pos: Vector2i, forceDrop = false) -> Dictionary:
 	}
 	
 	pos = clamp_position(pos)
-	var _oldStone: Stone = null
-	if table_stones.has(pos):
-		_oldStone = table_stones[pos]
 	
 	# search for a nearby empty space if we are forcing a drop.
 	if forceDrop: pos = find_nearest_free(pos)
-	
 	data.pos = pos
+	
+	var _oldStone: Stone = null
+	if table_stones.has(pos):
+		_oldStone = table_stones[pos]
 	
 	# If the space is empty, we'll try to add a stone from the pocket inventory
 	if _oldStone == null:

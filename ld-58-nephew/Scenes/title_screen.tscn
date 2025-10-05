@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://bqskv7ofm21ye"]
+[gd_scene load_steps=6 format=3 uid="uid://bqskv7ofm21ye"]
+
+[ext_resource type="Texture2D" uid="uid://cf03qif47l7yh" path="res://Art/CourtScene.png" id="1_twnyg"]
+[ext_resource type="Script" uid="uid://bb03ygntqgx3j" path="res://Scripts/nav_script_change_scene.gd" id="2_55kwv"]
+[ext_resource type="Texture2D" uid="uid://c4xkk45cqjxg" path="res://Art/Sign_0.png" id="3_12m1t"]
+[ext_resource type="FontFile" uid="uid://c4l0h60osbltd" path="res://Fonts/de re publica.ttf" id="4_6vd4x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n82rj"]
+size = Vector2(161, 51)
 
 [node name="TitleScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_twnyg")
+centered = false
+
+[node name="ToLabButton" type="Area2D" parent="."]
+position = Vector2(1028, 590)
+script = ExtResource("2_55kwv")
+goto_scene = "River"
+
+[node name="Sprite2D" type="Sprite2D" parent="ToLabButton"]
+position = Vector2(-3, 5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_12m1t")
+
+[node name="Label" type="Label" parent="ToLabButton/Sprite2D"]
+offset_left = -237.49998
+offset_top = -47.500015
+offset_right = 182.50002
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.36180407, 0.32305932, 0.27133033, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_6vd4x")
+theme_override_font_sizes/font_size = 64
+text = "To  Stream"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToLabButton"]
+position = Vector2(-12.5, 6.5)
+shape = SubResource("RectangleShape2D_n82rj")
+
+[connection signal="input_event" from="ToLabButton" to="ToLabButton" method="_on_input_event"]

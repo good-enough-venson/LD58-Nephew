@@ -1,12 +1,20 @@
 extends Node
 
 static var Scenes = {
-	"MainMenu":"res://Scenes/title_screen.tscn",
+	"Court":"res://Scenes/title_screen.tscn",
 	"Tutorial":"",
 	"Laboratory":"res://Scenes/lab_scene.tscn",
 	"River":"res://Scenes/river_scene.tscn",
 	"Credits":"res://Scenes/credits_scene.tscn",
 }
+
+static var Titles = [
+	"Apprentice Alchemist",
+	"Court Alchemist",
+	"Master Court Alchemist",
+	"Royal Court Alchemist",
+	"Grand Royal Court Alchemist"
+]
 
 var winCondition: Array[Stone]
 var difficulty = 0

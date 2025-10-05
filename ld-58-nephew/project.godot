@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LD58-Nephew"
-run/main_scene="uid://ep42i3b81pge"
+run/main_scene="uid://bqskv7ofm21ye"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

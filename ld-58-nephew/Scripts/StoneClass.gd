@@ -142,7 +142,7 @@ func _init(p_value: int):
 	family = get_stone_family(p_value)
 	sibId = get_stone_sibId(p_value)
 	catalyst = get_stone_catalyst(p_value)
-	name = str(catalyst.name)+"."+str(sibId)
+	name = "%d.%d(%d)" % [family, sibId, value]
 	glyph = get_stone_glyph(value)
 	color = catalyst.color.lerp(Color.WHITE_SMOKE, float(sibId-1)/50)
 	

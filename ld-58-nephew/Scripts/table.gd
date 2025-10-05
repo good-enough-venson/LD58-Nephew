@@ -89,11 +89,14 @@ func map_from_grid(grid_point: Vector2, grid_width: float, grid_height: float) -
 
 
 func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("pointer_select"):
+	var select = event.is_action_pressed("pointer_select")
+	var deselect = event.is_action_pressed("pointer_deselect")
+	
+	if select or deselect:
 		var mousePos = get_global_mouse_position()
 		var gridPos = map_to_grid(mousePos,TableInventory.GRID_WIDTH,TableInventory.GRID_HEIGHT)
 		#print("pos[%d, %d]" % [roundi(gridPos.x), roundi(gridPos.y)])
-		var data = TableInventory.try_place_stone(Vector2i(roundi(gridPos.x), roundi(gridPos.y)))
+		var data = TableInventory.try_place_stone(Vector2i(roundi(gridPos.x), roundi(gridPos.y)), deselect)
 		if data.dropped:
 			var pos = map_from_grid(data.pos,TableInventory.GRID_WIDTH, TableInventory.GRID_HEIGHT) 
 			stone_pool.get_stone_node(data.stone, pos)
