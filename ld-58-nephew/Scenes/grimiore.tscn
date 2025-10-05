@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://84g5v0jc58d0"]
+
+[ext_resource type="Script" uid="uid://ubxh5ybv6pfl" path="res://Scripts/grimiore.gd" id="1_l1wfg"]
+
+[node name="Grimiore" type="Node"]
+script = ExtResource("1_l1wfg")

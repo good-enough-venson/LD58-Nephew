@@ -1,0 +1,317 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbefdrmk7jxqo"]
+
+[ext_resource type="Script" uid="uid://bp28yloc22poy" path="res://Scripts/stones_in_hand.gd" id="1_hg8jb"]
+[ext_resource type="Texture2D" uid="uid://cmn6h0h3ftmpd" path="res://Art/Rock.png" id="2_axvkt"]
+[ext_resource type="FontFile" uid="uid://d1afp5wh7pgws" path="res://Fonts/Myfontrunes-Regular.ttf" id="2_mvvdq"]
+
+[node name="StonesInHand" type="Node2D"]
+script = ExtResource("1_hg8jb")
+
+[node name="Stone10" type="Sprite2D" parent="."]
+position = Vector2(38, 59.999996)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune10" type="Label" parent="Stone10"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -117.99999
+offset_right = -12.0
+offset_bottom = -7.9999924
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(35, 125)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune9" type="Label" parent="Sprite2D2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.66667
+offset_top = -119.55556
+offset_right = -14.666668
+offset_bottom = -9.555557
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(32, 184)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune8" type="Label" parent="Sprite2D3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -119.000015
+offset_right = -15.5
+offset_bottom = -9.000015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(27.000002, 232)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune7" type="Label" parent="Sprite2D4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.66667
+offset_top = -117.33331
+offset_right = -14.666672
+offset_bottom = -7.333313
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(22, 269)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune6" type="Label" parent="Sprite2D5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -119.000015
+offset_right = -13.0
+offset_bottom = -9.000015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(19, 298)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune5" type="Label" parent="Sprite2D6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.66667
+offset_top = -117.3333
+offset_right = -14.666668
+offset_bottom = -7.3332977
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(18, 323)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune4" type="Label" parent="Sprite2D7"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.15385
+offset_top = -117.84619
+offset_right = -14.153847
+offset_bottom = -7.8461914
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(17, 344)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune3" type="Label" parent="Sprite2D8"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -122.33325
+offset_right = -18.0
+offset_bottom = -12.333256
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(16, 364)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune2" type="Label" parent="Sprite2D9"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.454544
+offset_top = -118.5455
+offset_right = -13.454544
+offset_bottom = -8.545502
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(16, 383)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune1" type="Label" parent="Sprite2D10"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.99999
+offset_top = -124.000015
+offset_right = -17.999992
+offset_bottom = -14.000015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(16, 399.99997)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_axvkt")
+
+[node name="Rune0" type="Label" parent="Sprite2D11"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.44444
+offset_top = -119.55516
+offset_right = -12.444447
+offset_bottom = -9.5551605
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("2_mvvdq")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1

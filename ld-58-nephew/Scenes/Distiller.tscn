@@ -1,0 +1,211 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm3s5wfy8i2m2"]
+
+[ext_resource type="Texture2D" uid="uid://chhj44eo1ujhu" path="res://Art/Distiller.png" id="1_euyfp"]
+[ext_resource type="Script" uid="uid://4ddkw8jhj2e4" path="res://Scripts/distiller.gd" id="1_q6fhp"]
+[ext_resource type="Texture2D" uid="uid://cmn6h0h3ftmpd" path="res://Art/Rock.png" id="3_qfbh5"]
+[ext_resource type="FontFile" uid="uid://d1afp5wh7pgws" path="res://Fonts/Myfontrunes-Regular.ttf" id="4_s8i6s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5b82"]
+radius = 25.019993
+
+[node name="Distiller" type="Node2D" node_paths=PackedStringArray("origin_sprite", "left_pigeon_sprite", "right_pigeon_sprite", "catalyst_sprite", "product_sprite", "origin_label", "left_pigeon_label", "right_pigeon_label", "catalyst_label", "product_label")]
+script = ExtResource("1_q6fhp")
+origin_sprite = NodePath("origin")
+left_pigeon_sprite = NodePath("leftPigeon")
+right_pigeon_sprite = NodePath("rightPigeon")
+catalyst_sprite = NodePath("catalyst")
+product_sprite = NodePath("product")
+origin_label = NodePath("origin/Rune10")
+left_pigeon_label = NodePath("leftPigeon/Rune10")
+right_pigeon_label = NodePath("rightPigeon/Rune10")
+catalyst_label = NodePath("catalyst/Rune10")
+product_label = NodePath("product/Rune10")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(646.00006, 304)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("1_euyfp")
+
+[node name="origin" type="Sprite2D" parent="."]
+position = Vector2(570, 43)
+scale = Vector2(0.2999994, 0.2999994)
+texture = ExtResource("3_qfbh5")
+
+[node name="Rune10" type="Label" parent="origin"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -117.99999
+offset_right = -12.0
+offset_bottom = -7.9999924
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("4_s8i6s")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leftPigeon" type="Sprite2D" parent="."]
+position = Vector2(517, 74)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_qfbh5")
+
+[node name="Rune10" type="Label" parent="leftPigeon"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -117.99999
+offset_right = -12.0
+offset_bottom = -7.9999924
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("4_s8i6s")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="catalyst" type="Sprite2D" parent="."]
+position = Vector2(571, 108)
+scale = Vector2(0.2999994, 0.2999994)
+texture = ExtResource("3_qfbh5")
+
+[node name="Rune10" type="Label" parent="catalyst"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -117.99999
+offset_right = -12.0
+offset_bottom = -7.9999924
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("4_s8i6s")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="product" type="Sprite2D" parent="."]
+position = Vector2(577, 294)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_qfbh5")
+
+[node name="Rune10" type="Label" parent="product"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -117.99999
+offset_right = -12.0
+offset_bottom = -7.9999924
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("4_s8i6s")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="rightPigeon" type="Sprite2D" parent="."]
+position = Vector2(624, 72)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_qfbh5")
+
+[node name="Rune10" type="Label" parent="rightPigeon"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -117.99999
+offset_right = -12.0
+offset_bottom = -7.9999924
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme_override_colors/font_shadow_color = Color(0.74138474, 0.7413847, 0.74138457, 0.7254902)
+theme_override_colors/font_outline_color = Color(0.7162959, 0.7162964, 0.7162961, 1)
+theme_override_fonts/font = ExtResource("4_s8i6s")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BodyCollision" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BodyCollision"]
+position = Vector2(344, 195)
+polygon = PackedVector2Array(329, -45, 358, -20, 393, 88, 394, 169, 334, 210, 147, 216, 83, 176, 87, 83, 115, -15, 163, -42)
+
+[node name="Origin" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Origin"]
+position = Vector2(571, 45)
+shape = SubResource("CircleShape2D_b5b82")
+
+[node name="Pigeon0" type="Area2D" parent="."]
+position = Vector2(-53, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pigeon0"]
+position = Vector2(571, 45)
+shape = SubResource("CircleShape2D_b5b82")
+
+[node name="Pigeon1" type="Area2D" parent="."]
+position = Vector2(56, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pigeon1"]
+position = Vector2(571, 45)
+shape = SubResource("CircleShape2D_b5b82")
+
+[node name="Catalyst" type="Area2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Catalyst"]
+position = Vector2(571, 45)
+shape = SubResource("CircleShape2D_b5b82")
+
+[connection signal="input_event" from="BodyCollision" to="." method="_on_body_input_event"]
+[connection signal="input_event" from="Origin" to="." method="_on_origin_input_event"]
+[connection signal="input_event" from="Pigeon0" to="." method="_on_pigeon_0_input_event"]
+[connection signal="input_event" from="Pigeon1" to="." method="_on_pigeon_1_input_event"]
+[connection signal="input_event" from="Catalyst" to="." method="_on_catalyst_input_event"]

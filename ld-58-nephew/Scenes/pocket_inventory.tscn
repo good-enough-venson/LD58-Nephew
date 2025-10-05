@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmtu52x1myxse"]
+
+[ext_resource type="Script" uid="uid://cfk88oul66f8c" path="res://Scripts/pocket_inventory.gd" id="1_57ash"]
+
+[node name="PocketInventory" type="Node"]
+script = ExtResource("1_57ash")

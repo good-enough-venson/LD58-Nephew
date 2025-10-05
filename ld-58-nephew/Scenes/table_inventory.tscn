@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kfvcath2mqqa"]
+
+[ext_resource type="Script" uid="uid://q4qk6j3ywlad" path="res://Scripts/table_inventory.gd" id="1_xi30t"]
+
+[node name="TableInventory" type="Node"]
+script = ExtResource("1_xi30t")
