@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dp7uqvden0ja6"]
 
-[ext_resource type="Script" uid="uid://bp773dfadoi1t" path="res://Scenes/river_scene.gd" id="1_82tw6"]
+[ext_resource type="Script" uid="uid://bp773dfadoi1t" path="res://Scripts/river_scene.gd" id="1_82tw6"]
 [ext_resource type="PackedScene" uid="uid://dbefdrmk7jxqo" path="res://Scenes/stones_in_hand.tscn" id="1_tsy4k"]
 [ext_resource type="Script" uid="uid://bb03ygntqgx3j" path="res://Scripts/nav_script_change_scene.gd" id="2_0xwrq"]
 [ext_resource type="Texture2D" uid="uid://c4xkk45cqjxg" path="res://Art/Sign_0.png" id="2_f8ifg"]

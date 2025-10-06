@@ -100,5 +100,6 @@ func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 		if data.dropped:
 			var pos = map_from_grid(data.pos,TableInventory.GRID_WIDTH, TableInventory.GRID_HEIGHT) 
 			stone_pool.get_stone_node(data.stone, pos)
+			SfxManager.on_set_stone_table()
 		elif data.picked:
 			stone_pool.release_stone_node(data.stone)

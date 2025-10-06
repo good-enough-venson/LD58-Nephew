@@ -44,28 +44,28 @@ func try_place_stone(pos: Vector2i, forceDrop = false) -> Dictionary:
 	return data
 
 # Place a stone at a position (with collision check)
-func place_stone(stone: Stone, pos: Vector2i) -> bool:
-	pos = clamp_position(pos)  # Ensure within grid
-	if table_stones.has(pos):
-		# Position occupied - for now, allow overlap as per your request
-		# To prevent: return false
-		print("Warning: Overlapping at %s" % pos)  # Or find_nearest_free(pos)
-	stone.position = pos
-	table_stones[pos] = stone
-	AudioManager.play_sfx(load("res://assets/sfx/place.wav"))
-	return true
+#func place_stone(stone: Stone, pos: Vector2i) -> bool:
+	#pos = clamp_position(pos)  # Ensure within grid
+	#if table_stones.has(pos):
+		## Position occupied - for now, allow overlap as per your request
+		## To prevent: return false
+		#print("Warning: Overlapping at %s" % pos)  # Or find_nearest_free(pos)
+	#stone.position = pos
+	#table_stones[pos] = stone
+	#AudioManager.play_sfx(load("res://assets/sfx/place.wav"))
+	#return true
 
 # Remove a stone from its position
-func remove_stone(pos: Vector2i) -> Stone:
-	if table_stones.has(pos):
-		var stone = table_stones[pos]
-		table_stones.erase(pos)
-		return stone
-	return null
+#func remove_stone(pos: Vector2i) -> Stone:
+	#if table_stones.has(pos):
+		#var stone = table_stones[pos]
+		#table_stones.erase(pos)
+		#return stone
+	#return null
 
 # Get stone at position
-func get_stone_at(pos: Vector2i) -> Stone:
-	return table_stones.get(pos, null)
+#func get_stone_at(pos: Vector2i) -> Stone:
+	#return table_stones.get(pos, null)
 
 # Clamp position to grid
 func clamp_position(pos: Vector2i) -> Vector2i:
@@ -73,7 +73,7 @@ func clamp_position(pos: Vector2i) -> Vector2i:
 	pos.y = clamp(pos.y, 0, GRID_HEIGHT - 1)
 	return pos
 
-# Optional: Find nearest free position if occupied
+# Find nearest free position if occupied. (Needs Rewrite)
 func find_nearest_free(start_pos: Vector2i) -> Vector2i:
 	if not table_stones.has(start_pos):
 		return start_pos

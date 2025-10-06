@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bqskv7ofm21ye"]
 
-[ext_resource type="Script" uid="uid://yotp0hq45m4g" path="res://Scenes/title_screen.gd" id="1_n82rj"]
+[ext_resource type="Script" uid="uid://yotp0hq45m4g" path="res://Scripts/title_screen.gd" id="1_n82rj"]
 [ext_resource type="Texture2D" uid="uid://cf03qif47l7yh" path="res://Art/CourtScene.png" id="1_twnyg"]
 [ext_resource type="Texture2D" uid="uid://bdo1y5h8eytbr" path="res://Art/speechbubble.png" id="2_12m1t"]
 [ext_resource type="Script" uid="uid://bb03ygntqgx3j" path="res://Scripts/nav_script_change_scene.gd" id="2_55kwv"]
@@ -52,6 +52,7 @@ theme_override_font_sizes/font_size = 20
 text = "What are you doing in my court? Come back when you have completed your objective!"
 vertical_alignment = 1
 autowrap_mode = 2
+paragraph_separator = "/n"
 clip_text = true
 text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
@@ -69,9 +70,10 @@ rotation = -0.07520559
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_8mikk")
 theme_override_font_sizes/font_size = 18
-text = "I can inspect runestones to discover their attributes... But you're still a beginner. I don't have time for you."
+text = "I can inspect runestones to discover their attributes... But you're still a beginner. /nI don't have time for you."
 vertical_alignment = 1
 autowrap_mode = 2
+paragraph_separator = "/n"
 clip_text = true
 text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true

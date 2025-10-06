@@ -2,7 +2,7 @@ class_name Grimoire extends Node
 
 static func TryAlchemy(origin:Stone, catalyst:Stone, pigeons:Array[Stone]=[]) -> Dictionary:
 	var results = {"origin":origin, "catalyst":catalyst, "pigeons":pigeons, "product":null}
-	if !origin or !catalyst: return results
+	if origin == null or catalyst == null: return results
 	
 	var _val = roundi(catalyst.use_catalyst(origin, pigeons))
 	var _log = "Tried Alchemizing %d with %d" % [origin.value, catalyst.catalyst.name]

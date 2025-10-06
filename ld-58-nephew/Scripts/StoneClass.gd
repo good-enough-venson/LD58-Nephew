@@ -3,7 +3,7 @@ class_name Stone extends Resource
 static var MINSTONE = 1
 static var MAXSTONE = 100
 
-static var stoneFamilies = {19:4,17:4,13:4,11:4,7:3,5:2,3:1,2:0}
+static var stoneFamilies = {11:4,7:3,5:2,3:1,2:0}
 static var stoneGlyphs = "IN1LQVUHTZY2AFCKJxGO34567890RBSEPMD"
 static var nullGlyph = "@"
 
@@ -33,6 +33,14 @@ static func get_stone_catalyst(fromValue:int) -> Dictionary:
 	var f = get_stone_family(fromValue)
 	var c = Catalyst[Catalyst.find_custom(func(_c) -> bool: return _c.family == f)]
 	return c
+
+# We're getting stones that are impossible to render, which is causing issues at higher levels.
+static func check_stone_is_valid(fromValue:int) -> bool:
+	if fromValue < MINSTONE: return false
+	if fromValue > MAXSTONE: return false
+	if get_stone_family(fromValue) < 0: return false
+	if get_stone_sibId(fromValue) >= stoneGlyphs.length(): return false
+	return true
 
 static var Catalyst = [
 	{
@@ -135,7 +143,7 @@ static var Catalyst = [
 			var _stb = false
 			
 			for _p in p:
-				if !_stb and get_root_stone(_p) == get_root_stone(o):
+				if _stb == false and get_root_stone(_p) == get_root_stone(o):
 					_stb = true
 					_bas = get_root_stone(0)
 				else: _bas = get_root_stone(_p)

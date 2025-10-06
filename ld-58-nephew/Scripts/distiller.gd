@@ -64,8 +64,11 @@ func get_pigeons() -> Array[Stone]:
 func try_alchemy() -> void:
 	if !get_origin_stone() or !get_catalyst_stone() or !get_product_stone(): return
 	var _valuesLib = Grimoire.TryAlchemy(get_origin_stone(),get_catalyst_stone(),get_pigeons())
-	if _valuesLib.product != null:
-		set_product_stone(_valuesLib.product)
+	var _newStone:Stone = _valuesLib.product
+	if _newStone != null:
+		set_product_stone(Stone.new(_newStone.value))
+		SfxManager.on_distillation()
+		Running.check_new_stone(_newStone)
 		UpdateUI()
 
 func _ready() -> void:
@@ -80,6 +83,7 @@ func _on_origin_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 		if _stone:
 			set_origin_stone(_stone)
 			updateGraphic(origin_sprite, origin_label, get_origin_stone())
+			SfxManager.on_set_stone_distiller()
 			try_alchemy()
 		return
 	
@@ -97,6 +101,7 @@ func _on_pigeon_0_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 		if _stone:
 			set_left_pigeon_stone(_stone)
 			updateGraphic(left_pigeon_sprite, left_pigeon_label, get_left_pigeon_stone())
+			SfxManager.on_set_stone_distiller()
 		return
 	
 	# Try to put the stone back into the pocket inventory
@@ -114,6 +119,7 @@ func _on_pigeon_1_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 		if _stone:
 			set_right_pigeon_stone(_stone)
 			updateGraphic(right_pigeon_sprite, right_pigeon_label, get_right_pigeon_stone())
+			SfxManager.on_set_stone_distiller()
 		return
 	
 	# Try to put the stone back into the pocket inventory
@@ -131,6 +137,7 @@ func _on_catalyst_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 		if _stone:
 			set_catalyst_stone(_stone)
 			updateGraphic(catalyst_sprite, catalyst_label, get_catalyst_stone())
+			SfxManager.on_set_stone_distiller()
 			try_alchemy()
 		return
 	
@@ -149,6 +156,7 @@ func _on_body_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 		if _stone:
 			set_product_stone(_stone)
 			updateGraphic(product_sprite, product_label, get_product_stone())
+			SfxManager.on_set_stone_distiller()
 			try_alchemy()
 		return
 	

@@ -22,6 +22,7 @@ TableInventory="*res://Scenes/table_inventory.tscn"
 PocketInventory="*res://Scenes/pocket_inventory.tscn"
 Grimiore="*res://Scenes/grimiore.tscn"
 Running="*res://Scenes/running.tscn"
+SfxManager="*res://Scenes/sfx_manager.tscn"
 
 [display]
 

@@ -4,4 +4,5 @@ extends Area2D
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("pointer_select"):
+		SfxManager.on_nav_button()
 		Running.load_scene(Running.Scenes[goto_scene])

@@ -16,6 +16,11 @@ static var Titles = [
 	"Grand Royal Court Alchemist"
 ]
 
+var runesDiscovered: Array[int] = []
+var arcanaeDiscovered: Array[int] = []
+var runeHints: Array[int] = []
+var arcanaHints: Array[int] = []
+
 var winCondition: Array[Stone]
 var difficultyLevels = {
 	0:[1,10],
@@ -28,6 +33,9 @@ var player_rank = 0
 var current_scene: Node = null
 var mission_dialog_index = 0
 
+func get_title() -> String: 
+	return Titles[clampi(player_rank, 0, Titles.size())]
+
 func _ready() -> void:
 	roll_win_condition()
 	var root = get_tree().root
@@ -38,17 +46,43 @@ func roll_win_condition() -> void:
 	var difficulty = clamp(player_rank, 0, difficultyLevels.size()-1)
 	var offset = difficultyLevels[difficulty][0]
 	var values:Array = range(difficultyLevels[difficulty][1]-offset)
-	var _log = ""
+	var _log = "Rolling Win Condition: "
+	var _log2 = ""
+	
+	var _range = values.size()-1
+	for i in range(0,_range+1):
+		if Stone.check_stone_is_valid(values[_range - i]) == false:
+			_log2 += "\ncut %d from choice pool: failed is_valid." % values[_range - i]
+			values.remove_at(_range - i)
 	
 	for i in range(5):
 		var _vi = randi() % values.size()
 		winCondition.append(Stone.new(values[_vi] + offset))
-		_log += "%s(%d), " % [str(winCondition.back().sort_id_fam_sib), winCondition.back().value]
+		#_log += "%s(%d), " % [str(winCondition.back().sort_id_fam_sib), winCondition.back().value]
+		_log += "%s, " % winCondition.back().name
 		values.remove_at(_vi)
 	
 	winCondition.sort_custom(func(x:Stone,y:Stone) -> bool: \
 		return x.sort_id_fam_sib > y.sort_id_fam_sib)
-	print(_log)
+	print(_log + _log2)
+
+func check_new_stone(stone:Stone):
+	if runesDiscovered.has(stone.sibId) == false:
+		runesDiscovered.append(stone.sibId)
+		SfxManager.on_new_unlock()
+	if arcanaeDiscovered.has(stone.family) == false:
+		arcanaeDiscovered.append(stone.family)
+		SfxManager.on_new_unlock()
+
+func hint_new_rune(stone:Stone):
+	if runeHints.has(stone.sibId) == false:
+		runeHints.append(stone.sibId)
+		SfxManager.on_new_unlock()
+
+func hint_new_arcana(stone:Stone):
+	if arcanaHints.has(stone.family) == false:
+		arcanaHints.append(stone.family)
+		SfxManager.on_new_unlock()
 
 func load_scene(path:String) -> void:
 	if not ResourceLoader.exists(path):
