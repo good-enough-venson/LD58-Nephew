@@ -36,6 +36,9 @@ func updateUI() -> void:
 			continue
 		#otherwise, update this graphic.
 		var stone = _stones[_stones.size() - 1 - i]
+		if stone == null:
+			print("NullStoneError!")
+			
 		spriteArray[i].visible = true
 		spriteArray[i].modulate = stone.color
 		labelArray[i].text = stone.glyph

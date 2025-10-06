@@ -29,17 +29,18 @@ func _ready() -> void:
 	updateUI()
 	
 func try_enplate_deplate(platter:int) -> void:
-	var _served = null if platter >= TableInventory.victory_stones.size() else \
-		TableInventory.victory_stones[platter]
-	
+	var _served = null
+	if TableInventory.victory_stones.size() > platter:
+		_served = TableInventory.victory_stones[platter]
+		
 	# Try to add a stone from the pocket inventory
-	if _served == null:
+	if PocketInventory.stones.size() > 0 and _served == null:
 		# Check to make sure that the last stone matches the requirement.
-		var _stoneVal = PocketInventory.stones[PocketInventory.stones.size()-1].value
+		var _stoneVal = PocketInventory.stones.back().value
 		var _winCond = Running.winCondition.duplicate()
 		
 		if _winCond.size() > platter and _stoneVal != _winCond[platter].value:
-			print("Wrong Stone")
+			print("Wrong Stone, %d -> %d" % [_stoneVal, _winCond[platter]])
 			return
 		
 		var _stone = PocketInventory.pop_stone()
@@ -50,7 +51,7 @@ func try_enplate_deplate(platter:int) -> void:
 		return
 	
 	# Try to put the stone back into the pocket inventory
-	if PocketInventory.add_stone(_served):
+	if _served != null and PocketInventory.add_stone(_served):
 		TableInventory.victory_stones[platter] = null
 		if stone_nodes.size() > platter:
 			stone_nodes[platter].update_graphic(null)

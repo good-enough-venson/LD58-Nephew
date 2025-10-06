@@ -213,7 +213,17 @@ func advance_monologue() -> String:
 	return logue
 
 func try_get_hint() -> String:
-	return "...you want something?"
+	var stone = PocketInventory.pop_stone()
+	if stone == null: return "...you want something?/n/n...I'll trade some info for a rune stone.."
+	
+	var hints:Array[String] = [
+		get_hint_stone_family(stone, Running.player_rank),
+		get_hint_stone_family(stone, Running.player_rank+1),
+		get_hint_stone_power(stone, Running.player_rank),
+		get_hint_stone_power(stone, Running.player_rank)
+	]
+	
+	return hints.pick_random()
 
 func check_has_required_stones() -> bool:
 	var _stones = PocketInventory.stones.duplicate()
@@ -223,6 +233,38 @@ func check_has_required_stones() -> bool:
 			return false
 	return true
 
+func get_hint_stone_family(stone:Stone, access:int) -> String:
+	var hint = ""
+	match access:
+		0,1: 
+			hint = "..it seems this stone belongs to the %s arcana... 
+			all such runestones have the same catalystic function.. yes."
+			hint = hint % [stone.catalyst.name]
+		2:
+			hint = "ah, yes.. a %s stone. it %s."
+			hint = hint % [stone.catalyst.name, stone.catalyst.note]
+		_:
+			hint = "..you probably kow that the %s arcana %s."
+			hint = hint % [stone.catalyst.name, stone.catalyst.description]
+	return hint
+	
+func get_hint_stone_power(stone:Stone, access:int) -> String:
+	var hint = ""
+	match access:
+		0,1: 
+			hint = "..a runestone's base power is different from it's rune value. This rune is a %d."
+			hint = hint % Stone.get_stone_sibId(stone.value)
+			print(stone.sibId)
+		2:
+			hint = "this runestone's base power is... ..ah, yes. it resonates nicely in %d."
+			hint = hint % stone.value
+		3:
+			hint = "the primary runestone arcana resonate on unique frequencies.. this stone's arcana resonates in %d"
+			hint = hint % [Stone.get_root_stone(stone.value)]
+		_:
+			hint = "to estimate a rune stone's base power, just multiply the rune value(%d) by the arcana resonance(%d), getting %d"
+			hint = hint % [stone.sibId, Stone.get_root_stone(stone.value), stone.value]
+	return hint
 
 func _on_king_click_box_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("pointer_select"): on_click_king()

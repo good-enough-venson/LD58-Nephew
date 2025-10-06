@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqskv7ofm21ye"]
+[gd_scene load_steps=14 format=3 uid="uid://bqskv7ofm21ye"]
 
 [ext_resource type="Script" uid="uid://yotp0hq45m4g" path="res://Scenes/title_screen.gd" id="1_n82rj"]
 [ext_resource type="Texture2D" uid="uid://cf03qif47l7yh" path="res://Art/CourtScene.png" id="1_twnyg"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://c4l0h60osbltd" path="res://Fonts/de re publica.ttf" id="4_6vd4x"]
 [ext_resource type="Texture2D" uid="uid://ktiipm7mfjgu" path="res://Art/whisperbubble.png" id="4_n82rj"]
 [ext_resource type="PackedScene" uid="uid://dbefdrmk7jxqo" path="res://Scenes/stones_in_hand.tscn" id="6_6vd4x"]
+[ext_resource type="FontFile" uid="uid://c8ruow75qfnc5" path="res://Fonts/IrishUncialfabeta-Bold.ttf" id="7_8mikk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n82rj"]
 size = Vector2(161, 51)
@@ -56,7 +57,6 @@ text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="InspectorSpeechBubble" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("4_n82rj")
 centered = false
 
@@ -66,8 +66,9 @@ offset_top = 220.675
 offset_right = 329.285
 offset_bottom = 351.69
 rotation = -0.07520559
-theme_override_colors/font_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
-theme_override_fonts/font = ExtResource("4_6vd4x")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_8mikk")
+theme_override_font_sizes/font_size = 18
 text = "I can inspect runestones to discover their attributes... But you're still a beginner. I don't have time for you."
 vertical_alignment = 1
 autowrap_mode = 2

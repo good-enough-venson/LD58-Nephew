@@ -36,8 +36,10 @@ static func get_stone_catalyst(fromValue:int) -> Dictionary:
 
 static var Catalyst = [
 	{
-		"family":-1, "name":"Dorm","color":Color.DARK_GRAY,
-		"function": func(o: float, _p: Array) -> float: return o
+		"family":-1, "name":"rock","color":Color.DARK_GRAY,
+		"note":"is not recommended for use as catalyst",
+		"description":"produces only rocks, and pigeons have no effect",
+		"function": func(o: float, _p: Array) -> float: return -1
 	},
 	
 	#{
@@ -57,71 +59,101 @@ static var Catalyst = [
 	#},
 
 	{
-		"family":0, "name":"Rand","color":Color.DARK_ORANGE, 
+		"family":0, "name":"anaithnid","color":Color.DARK_ORANGE, 
+		"note":"yields unpredictable results",
+		"description":"increases unpredictability with pigeons' power",
 		"function": func(o: float, p: Array) -> float:
-			match p.size():
-				2: 
-					var _o = o
-					for i in range(get_stone_family(p[1])):
-						var _f = get_stone_family(p[0])
-						_o += (randi() % (2 * _f + 1)) - _f
-					return _o
-				1: 
-					var _f = get_stone_family(p[0])
-					return o + (randi() % (2 * _f + 1)) - _f
-				_: return o + (randi() % 3) - 1
-			,
+			var offset = 3 	
+			for _p in p: offset += get_stone_sibId(_p)
+			return o + (randi() % offset) - floori(float(offset)/2),
 	},
 	{
-		"family":1, "name":"Addi","color":Color.FOREST_GREEN,
+		"family":1, "name":"comhar","color":Color.FOREST_GREEN,
+		"note":"produces runestones closely related in power",
+		"description":"utilizes pigeons' arcanae and base power levels",
 		"function": func(o: float, p: Array) -> float: 
-			match p.size():
-				2: match get_stone_family(p[0]):
-					0: return o - p[1]
-					1: return o + p[1]
-					_: return -1
-				1: match get_stone_family(p[0]):
-					0: return o - 1
-					_: return -1
-				_: return o + 1
+			var _sign = 1
+			var _offset = 1
+			for _p in p:
+				_offset += _p
+				if get_root_stone(_p) != get_root_stone(o): 
+					_sign = -1
+			return o + (_sign * _offset)
+			
+			
+			#match p.size():
+				#2: match get_stone_family(p[0]):
+					#0: return o - p[1]
+					#1: return o + p[1]
+					#_: return -1
+				#1: match get_stone_family(p[0]):
+					#0: return o - 1
+					#_: return -1
+				#_: return o + 1
 			,
 	},
 	{
-		"family":2, "name":"Mult","color":Color.DEEP_SKY_BLUE,
+		"family":2, "name":"iolraigh","color":Color.DEEP_SKY_BLUE,
+		"note":"is useful for working within arcanae",
+		"description":"scales power level within arcanum based on pigeons' power",
 		"function": func(o: float, p: Array) -> float:
-			match p.size():
-				2: match get_stone_family(p[0]):
-					2: return o / p[1]
-					3: return o * p[1]
-					_: return -1
-				1: match get_stone_family(p[0]):
-					2: return o / 2
-					_: return -1
-				_: return o * 2
+			var _factors = get_stone_sibId(o)
+			for _p in p:
+				if get_root_stone(_p) == get_root_stone(o):
+					_factors += get_stone_sibId(_p)
+				else: _factors -= get_stone_sibId(_p)
+			return get_root_stone(o) * _factors
+			
+			#match p.size():
+				#2: match get_stone_family(p[0]):
+					#2: return o / p[1]
+					#3: return o * p[1]
+					#_: return -1
+				#1: match get_stone_family(p[0]):
+					#2: return o / 2
+					#_: return -1
+				#_: return o * 2
 			,
 	},
 	{
-		"family":3, "name":"Fact","color":Color.CRIMSON,
+		"family":3, "name":"comhdhuil","color":Color.CRIMSON,
+		"note":"builds fundamental runestones based on arcanae",
+		"description":"combines arcanae, building on the origin stone's power",
 		"function": func(o: float, p: Array) -> float: 
 			var product = get_root_stone(o)
 			for pigeon in p:
 				product *= get_root_stone(pigeon)
-			return product,
+			return product * get_stone_sibId(o),
 	},
 	{
-		"family":4, "name":"Rais","color":Color.MEDIUM_ORCHID,
+		"family":4, "name":"caenn","color":Color.MEDIUM_ORCHID,
+		"note":"takes pigeons very seriously.",
+		"description":"can change arcana, keeping power level if stablized",
 		"function": func(o: float, p: Array) -> float: 
-			var base = get_root_stone(o)
-			match p.size():
-				2: match get_stone_family(p[0]):
-					3: return pow(o, 1 / float(get_stone_family(p[1]) + 1))
-					4: return pow(base, get_stone_family(p[1]) + 1)
-					_: return -1
-				1: match get_stone_family(p[0]):
-					3: return pow(base, 0.5)
-					4: return pow(base, 2)
-					_: return -1
-				_: return base
+			var _val = get_stone_sibId(o)
+			var _bas = -1
+			var _stb = false
+			
+			for _p in p:
+				if !_stb and get_root_stone(_p) == get_root_stone(o):
+					_stb = true
+					_bas = get_root_stone(0)
+				else: _bas = get_root_stone(_p)
+			
+			if _stb: return _val * _bas
+			else: return _val
+			
+			#var base = get_root_stone(o)
+			#match p.size():
+				#2: match get_stone_family(p[0]):
+					#3: return pow(o, 1 / float(get_stone_family(p[1]) + 1))
+					#4: return pow(base, get_stone_family(p[1]) + 1)
+					#_: return -1
+				#1: match get_stone_family(p[0]):
+					#3: return pow(base, 0.5)
+					#4: return pow(base, 2)
+					#_: return -1
+				#_: return base
 			,
 	}
 ]
