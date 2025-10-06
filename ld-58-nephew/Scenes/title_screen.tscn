@@ -1,18 +1,79 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqskv7ofm21ye"]
+[gd_scene load_steps=13 format=3 uid="uid://bqskv7ofm21ye"]
 
+[ext_resource type="Script" uid="uid://yotp0hq45m4g" path="res://Scenes/title_screen.gd" id="1_n82rj"]
 [ext_resource type="Texture2D" uid="uid://cf03qif47l7yh" path="res://Art/CourtScene.png" id="1_twnyg"]
+[ext_resource type="Texture2D" uid="uid://bdo1y5h8eytbr" path="res://Art/speechbubble.png" id="2_12m1t"]
 [ext_resource type="Script" uid="uid://bb03ygntqgx3j" path="res://Scripts/nav_script_change_scene.gd" id="2_55kwv"]
 [ext_resource type="Texture2D" uid="uid://c4xkk45cqjxg" path="res://Art/Sign_0.png" id="3_12m1t"]
+[ext_resource type="Texture2D" uid="uid://cba0gn4boynkr" path="res://Art/king.png" id="3_0061g"]
 [ext_resource type="FontFile" uid="uid://c4l0h60osbltd" path="res://Fonts/de re publica.ttf" id="4_6vd4x"]
+[ext_resource type="Texture2D" uid="uid://ktiipm7mfjgu" path="res://Art/whisperbubble.png" id="4_n82rj"]
+[ext_resource type="PackedScene" uid="uid://dbefdrmk7jxqo" path="res://Scenes/stones_in_hand.tscn" id="6_6vd4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n82rj"]
 size = Vector2(161, 51)
 
-[node name="TitleScreen" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0061g"]
+radius = 129.18979
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mikk"]
+radius = 124.67959
+
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("king_sprite", "king_bubble", "king_text", "inspector_bubble", "inspector_text")]
+script = ExtResource("1_n82rj")
+king_sprite = NodePath("King")
+king_bubble = NodePath("KingSpeechBubble")
+king_text = NodePath("KingSpeechBubble/Label")
+inspector_bubble = NodePath("InspectorSpeechBubble")
+inspector_text = NodePath("InspectorSpeechBubble/Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_twnyg")
 centered = false
+
+[node name="King" type="Sprite2D" parent="."]
+texture = ExtResource("3_0061g")
+centered = false
+
+[node name="KingSpeechBubble" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_12m1t")
+centered = false
+
+[node name="Label" type="Label" parent="KingSpeechBubble"]
+offset_left = 674.0
+offset_top = 46.745
+offset_right = 1052.845
+offset_bottom = 221.51999
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6vd4x")
+theme_override_font_sizes/font_size = 20
+text = "What are you doing in my court? Come back when you have completed your objective!"
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InspectorSpeechBubble" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_n82rj")
+centered = false
+
+[node name="Label" type="Label" parent="InspectorSpeechBubble"]
+offset_left = 51.24
+offset_top = 220.675
+offset_right = 329.285
+offset_bottom = 351.69
+rotation = -0.07520559
+theme_override_colors/font_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+theme_override_fonts/font = ExtResource("4_6vd4x")
+text = "I can inspect runestones to discover their attributes... But you're still a beginner. I don't have time for you."
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ToLabButton" type="Area2D" parent="."]
 position = Vector2(1028, 590)
@@ -43,4 +104,20 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-12.5, 6.5)
 shape = SubResource("RectangleShape2D_n82rj")
 
+[node name="StonesInHand" parent="." instance=ExtResource("6_6vd4x")]
+
+[node name="KingClickBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KingClickBox"]
+position = Vector2(543, 252)
+shape = SubResource("CircleShape2D_0061g")
+
+[node name="InspectorClickBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InspectorClickBox"]
+position = Vector2(148, 518)
+shape = SubResource("CircleShape2D_8mikk")
+
 [connection signal="input_event" from="ToLabButton" to="ToLabButton" method="_on_input_event"]
+[connection signal="input_event" from="KingClickBox" to="." method="_on_king_click_box_input_event"]
+[connection signal="input_event" from="InspectorClickBox" to="." method="_on_inspector_click_box_input_event"]

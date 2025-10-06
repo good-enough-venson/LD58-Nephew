@@ -138,6 +138,8 @@ var sort_id_fam_sib: float
 
 func _init(p_value: int):
 	p_value = clampi(p_value, MINSTONE, MAXSTONE)
+	p_value = 1 if get_stone_family(p_value) == -1 else p_value 
+	
 	value = p_value
 	family = get_stone_family(p_value)
 	sibId = get_stone_sibId(p_value)

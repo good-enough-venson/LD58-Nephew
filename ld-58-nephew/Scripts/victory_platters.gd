@@ -4,14 +4,12 @@ extends Node2D
 @export var labels: Array[Label]
 @export var platters: Array[Sprite2D]
 
-var stones_served: Array[Stone]
-
 func updateUI() -> void:
 	var _winCond = Running.winCondition.duplicate()
 	for i in range(stone_nodes.size()):
-		#stone_nodes[i].visible = stones_served[i] != null
-		if stones_served.size() > i:
-			stone_nodes[i].update_graphic(stones_served[i])
+		#stone_nodes[i].visible = TableInventory.victory_stones[i] != null
+		if TableInventory.victory_stones.size() > i:
+			stone_nodes[i].update_graphic(TableInventory.victory_stones[i])
 		
 		if _winCond.size() > i:
 			if labels.size() > i:
@@ -28,24 +26,32 @@ func updateUI() -> void:
 		
 
 func _ready() -> void:
-	stones_served = [null, null, null, null, null]
 	updateUI()
 	
 func try_enplate_deplate(platter:int) -> void:
-	var _served = null if platter >= stones_served.size() else stones_served[platter]
+	var _served = null if platter >= TableInventory.victory_stones.size() else \
+		TableInventory.victory_stones[platter]
 	
 	# Try to add a stone from the pocket inventory
 	if _served == null:
+		# Check to make sure that the last stone matches the requirement.
+		var _stoneVal = PocketInventory.stones[PocketInventory.stones.size()-1].value
+		var _winCond = Running.winCondition.duplicate()
+		
+		if _winCond.size() > platter and _stoneVal != _winCond[platter].value:
+			print("Wrong Stone")
+			return
+		
 		var _stone = PocketInventory.pop_stone()
 		if _stone:
-			stones_served[platter] = _stone
+			TableInventory.victory_stones[platter] = _stone
 			if stone_nodes.size() > platter:
 				stone_nodes[platter].update_graphic(_stone)
 		return
 	
 	# Try to put the stone back into the pocket inventory
 	if PocketInventory.add_stone(_served):
-		stones_served[platter] = null
+		TableInventory.victory_stones[platter] = null
 		if stone_nodes.size() > platter:
 			stone_nodes[platter].update_graphic(null)
 

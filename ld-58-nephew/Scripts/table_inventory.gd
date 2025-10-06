@@ -3,6 +3,9 @@ extends Node
 # Table as dict: Vector2i(position) -> Stone
 var table_stones: Dictionary = {}  # Key: Vector2i(x, y), Value: Stone
 
+var victory_stones: Array[Stone] = [null, null, null, null, null]
+var distiller_stones: Array[Stone] = [null, null, null, null, null]
+
 # Grid size (adjust for your UI/table size)
 const GRID_WIDTH: int = 20
 const GRID_HEIGHT: int = 10

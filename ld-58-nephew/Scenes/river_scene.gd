@@ -12,6 +12,11 @@ func get_new_stone() -> Stone:
 	return Stone.new(1)
 
 func try_pick_stone() -> void:
+	if Input.is_action_pressed("cheat_code",false):
+		for stone in Running.winCondition.duplicate():
+			PocketInventory.add_stone(stone)
+		return
+		
 	var new_stone = get_new_stone()
 	if PocketInventory.add_stone(new_stone):
 		print("Picked up a new %s!" % new_stone.name)

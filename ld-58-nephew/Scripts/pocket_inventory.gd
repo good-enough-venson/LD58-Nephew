@@ -16,6 +16,18 @@ func add_stone(stone: Stone) -> bool:
 
 func pop_stone() -> Stone:
 	var _stone = stones.pop_back()
-	if _stone:
-		onInventoryChange.emit()
+	if _stone: onInventoryChange.emit()
 	return _stone
+
+# Removes all or none of the requested group.
+# Stones are matched by value.
+func remove_stones(requested:Array[Stone]) -> bool:
+	for stone in requested:
+		if stones.find_custom(func(_s:Stone) -> bool: return _s.value == stone.value) < 0:
+			return false
+		
+	for stone in requested:
+		stones.remove_at(stones.find_custom(func(_s:Stone) -> bool: return _s.value == stone.value))
+	
+	onInventoryChange.emit()
+	return true

@@ -15,20 +15,8 @@ func _ready() -> void:
 			else: print("No Label Found")
 		else: print("No Sprite Found")
 	
-	#var sampleStones = [
-		#Stone.new(1),
-		#Stone.new(2),
-		#Stone.new(2),
-		#Stone.new(2),
-		#Stone.new(2),
-		#Stone.new(2),
-	#]
-	#
-	#for stone in sampleStones:
-		#if PocketInventory.add_stone(stone) == false: break
-	
-	updateUI()
 	PocketInventory.onInventoryChange.connect(updateUI)
+	updateUI()
 
 func resetGraphic(sprite: Sprite2D, label: Label) -> void:
 	label.text = Stone.nullGlyph
@@ -45,7 +33,7 @@ func updateUI() -> void:
 		# If we have run out of stones, reset this one.
 		if _stones.size() - 1 - i < 0:
 			resetGraphic(spriteArray[i], labelArray[i])
-			break
+			continue
 		#otherwise, update this graphic.
 		var stone = _stones[_stones.size() - 1 - i]
 		spriteArray[i].visible = true
