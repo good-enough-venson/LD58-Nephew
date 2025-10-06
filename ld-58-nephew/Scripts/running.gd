@@ -40,6 +40,7 @@ func _ready() -> void:
 	roll_win_condition()
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+	AudioManager.play_bgm(load("res://Audio/BGM/bgm.mp3"))
 
 func roll_win_condition() -> void:
 	winCondition.clear()

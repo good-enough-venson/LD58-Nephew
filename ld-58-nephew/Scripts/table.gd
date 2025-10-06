@@ -10,8 +10,11 @@ func top_right() -> Vector2: return tableCorners[1].global_position
 func bottom_left() -> Vector2: return tableCorners[2].global_position
 func bottom_right() -> Vector2: return tableCorners[3].global_position
 
+var mouse_over = false
+
 # spool up the graphics for the table inventory
 func _ready() -> void:
+	AudioManager.set_lowpass_inside()
 	stone_pool.release_all()
 	var inventory = TableInventory.table_stones.duplicate()
 	for key in inventory.keys():
@@ -19,6 +22,8 @@ func _ready() -> void:
 		stone_pool.get_stone_node(inventory[key], pos)
 
 func _process(delta: float) -> void:
+	if !mouse_over: return
+	
 	var mousePos = get_global_mouse_position()
 	var gridPos = map_to_grid(mousePos,TableInventory.GRID_WIDTH,TableInventory.GRID_HEIGHT)
 	
@@ -103,3 +108,12 @@ func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 			SfxManager.on_set_stone_table()
 		elif data.picked:
 			stone_pool.release_stone_node(data.stone)
+
+
+func _on_area_2d_mouse_entered() -> void:
+	mouse_over = true
+
+
+func _on_area_2d_mouse_exited() -> void:
+	shadow.global_position = Vector2.RIGHT*2000
+	mouse_over = false

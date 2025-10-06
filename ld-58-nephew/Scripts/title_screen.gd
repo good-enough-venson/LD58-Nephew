@@ -89,7 +89,7 @@ var mission_monologues = [
 		"...",
 		"It's time to leave that dingy old lab behind.",
 		"...",
-		"Game Over.",
+		"*GAMEOVER*Game Over.",
 		"The End.",
 		"...",
 		"Unless you want to keep playing around with rune stones, then be my guest!",
@@ -116,6 +116,7 @@ var has_stones = false
 var dialog_index:int = 0
 
 func _ready() -> void:
+	AudioManager.set_lowpass_inside()
 	on_enter_court()
 
 func on_enter_court() -> void:
@@ -215,6 +216,8 @@ func advance_monologue() -> String:
 	if logue.begins_with("*TAKESTONES*"):
 		logue = logue.substr(12)
 		try_rank_up()
+	else: if logue.begins_with("*GAMEOVER*"):
+		logue = logue.substr(10)
 	else: SfxManager.on_dialogue()
 	return logue
 

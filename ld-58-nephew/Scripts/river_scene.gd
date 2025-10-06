@@ -5,6 +5,9 @@ extends Node2D
 	11:100,7:50,5:40,3:10,2:4,1:1
 }
 
+func _ready() -> void:
+	AudioManager.set_lowpass_outside()
+
 func get_new_stone() -> Stone:
 	for key in find_stone_odds.keys():
 		if randi() % find_stone_odds[key] == 0:

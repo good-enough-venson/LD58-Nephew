@@ -8,7 +8,7 @@ var distiller_stones: Array[Stone] = [null, null, null, null, null]
 
 # Grid size (adjust for your UI/table size)
 const GRID_WIDTH: int = 20
-const GRID_HEIGHT: int = 10
+const GRID_HEIGHT: int = 6
 
 func try_place_stone(pos: Vector2i, forceDrop = false) -> Dictionary:
 	var data = {

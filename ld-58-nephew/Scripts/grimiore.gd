@@ -5,7 +5,7 @@ static func TryAlchemy(origin:Stone, catalyst:Stone, pigeons:Array[Stone]=[]) ->
 	if origin == null or catalyst == null: return results
 	
 	var _val = roundi(catalyst.use_catalyst(origin, pigeons))
-	var _log = "Tried Alchemizing %d with %d" % [origin.value, catalyst.catalyst.name]
+	var _log = "Tried Alchemizing %d with %s" % [origin.value, catalyst.catalyst.name]
 	if pigeons.size() > 0: _log += " and %d" % pigeons[0].sort_id_fam_sib
 	if pigeons.size() > 1: _log += " and %d" % pigeons[1].sort_id_fam_sib
 	print(_log + ": %d" % _val)

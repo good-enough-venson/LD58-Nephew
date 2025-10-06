@@ -113,8 +113,13 @@ func duck_music(db_reduction: float = -12, fade_time: float = 0, hold_time: floa
 			fade_time
 		)
 
+func set_lowpass_outside() -> void:
+	set_lowpass(AudioServer.get_bus_index("bgm"), false, 2)
+func set_lowpass_inside() -> void:
+	set_lowpass(AudioServer.get_bus_index("bgm"), true, 2)
+
 # Enable/disable lowpass filter on specified bus
-func set_lowpass(bus_index: int, enable: bool, cutoff_hz: float = 500, fade_time: float = 0):
+func set_lowpass(bus_index: int, enable: bool, fade_time: float = 0, cutoff_hz: float = 500):
 	var lowpass = AudioServer.get_bus_effect(bus_index, lowpass_effect_index) as AudioEffectLowPassFilter
 	if lowpass:
 		if enable:
